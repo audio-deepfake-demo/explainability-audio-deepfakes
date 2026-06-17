@@ -310,52 +310,117 @@
   <div class="authors">Anonymous Submission</div>
 </header>
 <main>
+  
   <section class="section">
     <div class="section-eyebrow">Abstract</div>
     <p class="abstract-text">
       Recent advances in explainable audio deepfake detection have highlighted the importance of perceptually meaningful artifacts that humans rely on to identify synthetic speech. However, obtaining artifact-level annotations remains costly, subjective, and difficult to scale. In this work, we propose a taxonomy-driven framework for simulating perceptual artifacts in synthetic speech. We first organize commonly reported deepfake artifacts into a structured taxonomy and then introduce artifact-specific simulation strategies that generate diverse manifestations of these artifacts through transcript-level modifications and signal-level transformations. To ensure that the intended characteristics are preserved, we further design validation procedures for artifact verification. Using the proposed framework, we generate PARTS dataset, a corpus of over 26,000 synthetic speech samples with automatically derived artifact annotations and metadata. Human evaluation demonstrates that the simulated artifacts are perceptually recognizable, while classification experiments indicate that the generated artifact categories are sufficiently distinguishable. Our framework offers a scalable alternative to manual artifact annotation and facilitates future research on explainable and human-centric audio deepfake analysis.
     </p>
   </section>
+  
   <section class="section">
     <div class="section-eyebrow">Artefact Taxonomy</div>
     <div class="section-title">Five Perceptual Categories</div>
     <p class="section-desc">Our taxonomy organises deepfake artefacts into five perceptually grounded categories, each with subcategories describing how synthesised speech deviates from natural human speech.</p>
-    <table class="taxonomy-table">
-      <thead>
-        <tr>
-          <th style="width:30%">Category</th>
-          <th>Subcategories</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="cat-label"><span class="cat-dot dot-art"></span>Articulation Related</span></td>
-          <td class="sub">Incomplete / Poor articulation<br>Slurred speech</td>
-          <td class="sub">Lack of clarity in speech formation; words unclear or merged.</td>
-        </tr>
-        <tr>
-          <td><span class="cat-label"><span class="cat-dot dot-ling"></span>Linguistic / Paralinguistic</span></td>
-          <td class="sub">Mispronounced words / acronyms<br>Word / phrase repetition<br>Unnatural paralinguistic sounds</td>
-          <td class="sub">Clear but mispronounced or repeated words; unnatural filler sounds.</td>
-        </tr>
-        <tr>
-          <td><span class="cat-label"><span class="cat-dot dot-tmp"></span>Temporal / Prosodic</span></td>
-          <td class="sub">Awkward pauses / word stress<br>Missing natural pauses / breath<br>Lack of expressiveness</td>
-          <td class="sub">Errors in timing, rhythm, stress, or intonation.</td>
-        </tr>
-        <tr>
-          <td><span class="cat-label"><span class="cat-dot dot-sig"></span>Signal-Level</span></td>
-          <td class="sub">Background / quantization noise<br>Impulse noise (click / pop / thud)</td>
-          <td class="sub">Unwanted distortions at the audio signal level, independent of speech content.</td>
-        </tr>
-        <tr>
-          <td><span class="cat-label"><span class="cat-dot dot-vq"></span>Spectral / Voice-Quality</span></td>
-          <td class="sub">Muffled voice<br>Unnatural voice timbre<br>Distorted / wobbly voice</td>
-          <td class="sub">Unnatural voice characteristics in spectral texture or quality.</td>
-        </tr>
-      </tbody>
-    </table>
+<table class="taxonomy-table">
+  <thead>
+    <tr>
+      <th style="width:28%">Category</th>
+      <th style="width:28%">Subcategory</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td rowspan="2">
+        <span class="cat-label">
+          <span class="cat-dot dot-art"></span>
+          Articulation-Related
+        </span>
+      </td>
+      <td>Poor Word Articulation</td>
+      <td>Unclear / unintelligible words with clear word boundaries</td>
+    </tr>
+    <tr>
+      <td>Slurred Speech</td>
+      <td>Unclear speech with merged / blended word boundaries</td>
+    </tr>
+
+    <tr>
+      <td rowspan="3">
+        <span class="cat-label">
+          <span class="cat-dot dot-ling"></span>
+          Linguistic / Paralinguistic
+        </span>
+      </td>
+      <td>Word/Phrase Repetition</td>
+      <td>Unintentional repetition of words / phrases</td>
+    </tr>
+    <tr>
+      <td>Mishandled Non-Standard Words</td>
+      <td>Incorrect handling of abbreviations / date / units / named-entities etc.</td>
+    </tr>
+    <tr>
+      <td>Unnatural Paralinguistic Sounds</td>
+      <td>Non-verbal / filler sounds like 'hmm', 'uh' seem artificial and awkward</td>
+    </tr>
+
+    <tr>
+      <td rowspan="3">
+        <span class="cat-label">
+          <span class="cat-dot dot-tmp"></span>
+          Temporal / Prosodic
+        </span>
+      </td>
+      <td>Awkward Pauses</td>
+      <td>Unnatural word stress and pauses at awkward positions</td>
+    </tr>
+    <tr>
+      <td>Missing Natural Pauses</td>
+      <td>Overly fast speech lacking natural breath timings</td>
+    </tr>
+    <tr>
+      <td>Lack of Expressiveness</td>
+      <td>Monotonous speaking style with no expression / emotion</td>
+    </tr>
+
+    <tr>
+      <td rowspan="2">
+        <span class="cat-label">
+          <span class="cat-dot dot-sig"></span>
+          Signal-level
+        </span>
+      </td>
+      <td>Background Noise</td>
+      <td>Constant background noise like static, crackle, quantization noise</td>
+    </tr>
+    <tr>
+      <td>Impulse Noise</td>
+      <td>Sudden short-duration noise like clicks, thuds, transient noise etc.</td>
+    </tr>
+
+    <tr>
+      <td rowspan="3">
+        <span class="cat-label">
+          <span class="cat-dot dot-vq"></span>
+          Voice-Quality
+        </span>
+      </td>
+      <td>Muffled Voice</td>
+      <td>Suppressed / distant-sounding voice</td>
+    </tr>
+    <tr>
+      <td>Unnatural Voice Timbre</td>
+      <td>Synthetic / mechanical / overly-sharp voice texture</td>
+    </tr>
+    <tr>
+      <td>Distorted/Wobbly Voice</td>
+      <td>Stretched / warped / shaky / unstable voice</td>
+    </tr>
+
+  </tbody>
+</table>
   </section>
   <section class="section">
     <div class="section-eyebrow">Audio Samples</div>
@@ -376,7 +441,7 @@
           <div class="field-label">Transcript</div>
           <p class="transcript-text">"to describe whose vast height and immense riches it would perhaps you yawobewougyaatoo wougyaouwmuch forwouwmewougyaouwtoyouyawoattempt."</p>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: TM00150</div>
             <audio controls><source src="static/audio/TM00150.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -387,7 +452,7 @@
           <div class="field-label">Transcript</div>
           <p class="transcript-text">"to bwock the amendmentw although I would be awfully glad to help get some other kind of amendment ratified."</p>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+    <div class="chip-label chip-spoof-label">Audio ID: TM02128</div>
             <audio controls><source src="static/audio/TM02128.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -398,7 +463,7 @@
           <div class="field-label">Transcript</div>
           <p class="transcript-text">"Respiration, that is, the absorption of oxygen and the exhalation of carbonec acidua."</p>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: TM02157</div>
             <audio controls><source src="static/audio/TM02157.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -414,29 +479,29 @@
           <div class="field-label">Transcript</div>
           <p class="transcript-text">"Having determined that Mrs. Payne determined that Mrs. Payne was a responsible and reliable citizen, Hosty interviewed her on November 1."</p>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: AU01909</div>
             <audio controls><source src="static/audio/AU01909.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
           <div class="explanation-box">Unintentional repetition of words or phrases detected. The model identifies repeated token sequences in the output alignment absent from the reference transcript — a known failure mode of attention-based TTS decoders.</div>
         </div>
         <div class="sample-card">
-          <div class="subcategory-badge badge-linguistic">Mispronounced Words</div>
+          <div class="subcategory-badge badge-linguistic">Mishandled Non-Standard Words</div>
           <div class="field-label">Transcript</div>
           <p class="transcript-text">"We stored 2 L at 17°C for testing."</p>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: TM00805</div>
             <audio controls><source src="static/audio/TM00805.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
           <div class="explanation-box">Units and abbreviations are mispronounced — "L" and "17°C" are read as raw symbols rather than natural expansions. The model detects a mismatch between expected prosodic patterns for unit abbreviations and the produced phoneme sequence.</div>
         </div>
         <div class="sample-card">
-          <div class="subcategory-badge badge-linguistic">Mispronounced Acronyms</div>
+          <div class="subcategory-badge badge-linguistic">Mishandled Non-Standard Words</div>
           <div class="field-label">Transcript</div>
           <p class="transcript-text">"Prof Rao discussed U.N. and No.10." <span style="color:var(--muted);font-style:normal;">(shorthand notations pronounced incorrectly)</span></p>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: TM00874</div>
             <audio controls><source src="static/audio/TM00874.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -447,7 +512,7 @@
           <div class="field-label">Transcript</div>
           <p class="transcript-text">"During the physics experiment ...[Umm].. raises additional concerns ...[Uh].. if we want accurate conclusions."</p>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: TM01786</div>
             <audio controls><source src="static/audio/TM01786.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -462,7 +527,7 @@
           <div class="subcategory-badge badge-temporal">Missing Natural Pauses</div>
           <div class="artefact-desc">Overly fast speech — natural breath timing absent</div>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: AU14892</div>
             <audio controls><source src="static/audio/AU14892.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -473,7 +538,7 @@
           <div class="field-label">Transcript</div>
           <p class="transcript-text">"You're quitting tomorrow? You're not serious, are you?!"</p>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: TM01894</div>
             <audio controls><source src="static/audio/TM01894.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -484,7 +549,7 @@
           <div class="field-label">Transcript</div>
           <p class="transcript-text">"This is unreal! No way! I refuse to believe this."</p>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: TM01946</div>
             <audio controls><source src="static/audio/TM01946.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -494,7 +559,7 @@
           <div class="subcategory-badge badge-temporal">Lack of Expressiveness</div>
           <div class="artefact-desc">Emotionally charged sentence delivered flat</div>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: TM01833</div>
             <audio controls><source src="static/audio/TM01833.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -505,7 +570,7 @@
           <div class="field-label">Transcript</div>
           <p class="transcript-text">"When the. Final whistle. Blew the. Stadium exploded. Into celebration."</p>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: TM02048</div>
             <audio controls><source src="static/audio/TM02048.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -515,7 +580,7 @@
           <div class="subcategory-badge badge-temporal">Awkward Pauses</div>
           <div class="artefact-desc">Unnatural breaks disrupt conversational flow</div>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: TM02031</div>
             <audio controls><source src="static/audio/TM02031.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -530,7 +595,7 @@
           <div class="subcategory-badge badge-signal">Background Noise</div>
           <div class="artefact-desc">Quantization noise</div>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: AU05632</div>
             <audio controls><source src="static/audio/AU05632.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -540,7 +605,7 @@
           <div class="subcategory-badge badge-signal">Background Noise</div>
           <div class="artefact-desc">Crackle sound</div>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: AU10016</div>
             <audio controls><source src="static/audio/AU10016.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -550,7 +615,7 @@
           <div class="subcategory-badge badge-signal">Background Noise</div>
           <div class="artefact-desc">Electric buzz</div>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: AU12156</div>
             <audio controls><source src="static/audio/AU12156.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -560,7 +625,7 @@
           <div class="subcategory-badge badge-signal">Background Noise</div>
           <div class="artefact-desc">Static noise</div>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: AU10822</div>
             <audio controls><source src="static/audio/AU10822.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -570,7 +635,7 @@
           <div class="subcategory-badge badge-signal">Impulse Noise</div>
           <div class="artefact-desc">Click sound</div>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: AU06841</div>
             <audio controls><source src="static/audio/AU06841.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -580,7 +645,7 @@
           <div class="subcategory-badge badge-signal">Impulse Noise</div>
           <div class="artefact-desc">Thud sound</div>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: AU08222</div>
             <audio controls><source src="static/audio/AU08222.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -595,7 +660,7 @@
           <div class="subcategory-badge badge-spectral">Unnatural Voice Timbre</div>
           <div class="artefact-desc">Metallic and over-sharpened</div>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: AU03007</div>
             <audio controls><source src="static/audio/AU03007.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -605,7 +670,7 @@
           <div class="subcategory-badge badge-spectral">Unnatural Voice Timbre</div>
           <div class="artefact-desc">Synthetic quality — lacks natural human resonance</div>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: AU05456</div>
             <audio controls><source src="static/audio/AU05456.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -615,7 +680,7 @@
           <div class="subcategory-badge badge-spectral">Muffled Voice</div>
           <div class="artefact-desc">Muffled / distant voice</div>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: AU04248</div>
             <audio controls><source src="static/audio/AU04248.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
@@ -625,7 +690,7 @@
           <div class="subcategory-badge badge-spectral">Distorted / Wobbly Voice</div>
           <div class="artefact-desc">Shaky, unstable voice</div>
           <div class="audio-row">
-            <div class="chip-label chip-spoof-label">Spoof</div>
+            <div class="chip-label chip-spoof-label">Audio ID: AU12673</div>
             <audio controls><source src="static/audio/AU12673.wav" type="audio/wav">Your browser does not support audio.</audio>
           </div>
           <button class="explanation-toggle" onclick="toggleExp(this)">Show explanation</button>
